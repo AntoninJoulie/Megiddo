@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './styles/App.css';
 import './styles/cosmicBackground.css';
 import backgroundMusic from './assets/sounds/background-music.mp3';
@@ -16,11 +16,14 @@ function App() {
   const [currentDialogue, setCurrentDialogue] = useState(0); // État pour le dialogue actuel
 
   const dialogues = [
-    "Bonjour, bienvenue dans notre jeu.",
-    "Vous allez vivre une aventure incroyable.",
-    "Préparez-vous à explorer de nouveaux mondes.",
-    "Bonne chance et amusez-vous bien !"
+    "...",
+    "Hello?",
+    "Do you understand me?",
+    "Do you want to continue? (Yes/No)"
   ];
+
+  // Ajoutez les index des dialogues qui doivent utiliser la police spéciale
+  const specialFontDialogues = [0, 1, 2]; // Par exemple, les dialogues 2 et 3
 
   useEffect(() => {
     audio.loop = true; // Boucler la musique de fond
@@ -29,6 +32,7 @@ function App() {
     const playMusic = () => {
       if (!musicStarted) {
         const startAudio = new Audio(startSound); // Son de démarrage
+        startAudio.volume = 0.4; // Réduire le volume du son de démarrage
         startAudio.play();
         setMusicStarted(true);
         setFadeOut(true);
@@ -79,6 +83,7 @@ function App() {
         dialogues={dialogues}
         currentDialogue={currentDialogue}
         onNextDialogue={handleNextDialogue}
+        useSpecialFont={specialFontDialogues.includes(currentDialogue)} // Utiliser la nouvelle police pour les dialogues spécifiés
       />
     </div>
   );

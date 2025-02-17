@@ -7,7 +7,7 @@ const Message = ({ showMessage, fadeOut }) => {
       const messageElement = document.querySelector('.message');
       if (messageElement) {
         const currentOpacity = window.getComputedStyle(messageElement).opacity;
-        messageElement.style.animation = `fadeOut 3s forwards`;
+        messageElement.style.animation = `messageFadeOut 3s forwards`;
         messageElement.style.setProperty('--start-opacity', currentOpacity);
       }
     }

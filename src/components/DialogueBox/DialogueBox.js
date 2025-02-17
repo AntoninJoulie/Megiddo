@@ -3,7 +3,7 @@ import './DialogueBox.css';
 import typewriterSound from '../../assets/sounds/typewriter.mp3';
 import clickSound from '../../assets/sounds/click.mp3';
 
-const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue }) => {
+const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue, useSpecialFont }) => {
   const [displayedText, setDisplayedText] = useState(''); // État pour le texte affiché
   const [isComplete, setIsComplete] = useState(false); // État pour savoir si le texte est complètement affiché
   const [isDialogueVisible, setIsDialogueVisible] = useState(false); // État pour savoir si la boîte de dialogue est visible
@@ -34,7 +34,7 @@ const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue 
           }
           return nextText;
         });
-      }, 100); // Vitesse moyenne (100ms par lettre)
+      }, 50); // Vitesse accélérée (50ms par lettre)
 
       return () => clearInterval(interval); // Nettoyer l'intervalle lorsque le composant est démonté
     }
@@ -69,9 +69,9 @@ const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue 
 
   return (
     showDialogue && (
-      <div className="dialogue-box">
+      <div className={`dialogue-box ${useSpecialFont ? 'special-font' : ''}`}>
         <p>{displayedText}</p>
-        {isComplete && <div className="triangle"></div>} {/* Afficher le triangle lorsque le texte est complètement affiché */}
+        {isComplete && <div className="dialogue-triangle"></div>} {/* Afficher le triangle lorsque le texte est complètement affiché */}
       </div>
     )
   );

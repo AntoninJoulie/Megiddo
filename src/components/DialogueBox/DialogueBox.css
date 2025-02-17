@@ -1,77 +1,95 @@
 /* Styles pour le composant DialogueBox */
 .dialogue-box {
-    position: fixed; /* Position fixe pour centrer la boîte de dialogue */
-    top: 50%; /* Centrer verticalement */
-    left: 50%; /* Centrer horizontalement */
-    transform: translate(-50%, -50%); /* Ajuster pour centrer exactement */
-    width: 80%; /* Largeur de la boîte de dialogue */
-    height: 30%; /* Hauteur de la boîte de dialogue */
-    background-color: rgba(0, 0, 0, 0.8); /* Fond noir légèrement transparent */
-    color: white; /* Couleur du texte */
-    padding: 20px; /* Espacement interne */
-    border: 5px solid white; /* Cadre blanc */
-    border-radius: 10px; /* Coins arrondis */
-    display: block; /* Assurez-vous que le rectangle est affiché */
-    opacity: 0; /* Initialement invisible */
-    animation: fadeIn 2s forwards; /* Animation d'apparition */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoutez une ombre pour le rendre plus visible */
-    font-size: 18px; /* Augmentez la taille de la police */
-    overflow: hidden; /* Empêche le texte de dépasser la boîte */
+  position: fixed; /* Position fixe pour centrer la boîte de dialogue */
+  top: 40%; /* Centrer verticalement */
+  left: 50%; /* Centrer horizontalement */
+  transform: translate(-50%, -50%); /* Ajuster pour centrer exactement */
+  width: 80vw; /* Largeur de la boîte de dialogue en fonction de la largeur de la fenêtre */
+  height: 30vh; /* Hauteur de la boîte de dialogue en fonction de la hauteur de la fenêtre */
+  background-color: rgba(0, 0, 0, 0.8); /* Fond noir légèrement transparent */
+  color: white; /* Couleur du texte */
+  padding: 2vw; /* Espacement interne en fonction de la largeur de la fenêtre */
+  border: 0.5vw solid white; /* Cadre blanc en fonction de la largeur de la fenêtre */
+  border-radius: 1vw; /* Coins arrondis en fonction de la largeur de la fenêtre */
+  display: flex; /* Utiliser Flexbox */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  opacity: 0; /* Initialement invisible */
+  animation: dialogueFadeIn 2s forwards; /* Animation d'apparition */
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5); /* Ajoutez une ombre pour le rendre plus visible */
+  font-size: 2vw; /* Taille de la police par défaut en fonction de la largeur de la fenêtre */
+  overflow: hidden; /* Empêche le texte de dépasser la boîte */
+}
+
+.dialogue-box p {
+  color: white; /* Couleur du texte */
+  margin: 0;
+  font-size: 2vw; /* Taille de la police par défaut en fonction de la largeur de la fenêtre */
+  white-space: pre-wrap; /* Permet au texte de passer à la ligne */
+  word-wrap: break-word; /* Permet au texte de passer à la ligne */
+  line-height: 2.5; /* Augmentez l'espacement entre les lignes */
+}
+
+.dialogue-triangle {
+  width: 0;
+  height: 0;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-top: 1vw solid white;
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+  animation: dialogueBounce 1s infinite; /* Ajoutez une animation pour le faire monter et descendre */
+}
+
+.dialogue-next-button {
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+  padding: 1vw 2vw;
+  font-size: 1.5vw; /* Taille de la police en fonction de la largeur de la fenêtre */
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.5vw;
+  cursor: pointer;
+}
+
+.dialogue-next-button:hover {
+  background-color: #0056b3;
+}
+
+.special-font {
+  font-family: 'SpecialFont', cursive;
+  font-size: 3vw; /* Augmentez la taille de la police en fonction de la largeur de la fenêtre */
+  text-align: center; /* Centre le texte horizontalement */
+}
+
+.special-font p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vw; /* Augmentez la taille de la police en fonction de la largeur de la fenêtre */
+  line-height: 1.5; /* Augmentez l'espacement entre les lignes */
+  letter-spacing: 0.3vw; /* Augmentez l'espacement entre les lettres */
+}
+
+/* Animation d'apparition */
+@keyframes dialogueFadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .dialogue-box p {
-    color: white; /* Couleur du texte */
-    margin: 0;
-    font-size: 18px; /* Augmentez la taille de la police */
-    white-space: pre-wrap; /* Permet au texte de passer à la ligne */
-    word-wrap: break-word; /* Permet au texte de passer à la ligne */
+  to {
+    opacity: 1;
   }
-  
-  .triangle {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    animation: bounce 1s infinite; /* Ajoutez une animation pour le faire monter et descendre */
+}
+
+/* Animation de rebond */
+@keyframes dialogueBounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  .next-button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  50% {
+    transform: translateY(-0.5vw);
   }
-  
-  .next-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Animation d'apparition */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  /* Animation de rebond */
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
+}
