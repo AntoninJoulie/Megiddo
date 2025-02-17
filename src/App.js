@@ -15,6 +15,7 @@ function App() {
   const [showDialogue, setShowDialogue] = useState(false); // État pour afficher la boîte de dialogue
   const [currentDialogue, setCurrentDialogue] = useState(0); // État pour le dialogue actuel
 
+  // Liste des dialogues
   const dialogues = [
     "...",
     "Hello?",
@@ -22,13 +23,14 @@ function App() {
     "Do you want to continue? (Yes/No)"
   ];
 
-  // Ajoutez les index des dialogues qui doivent utiliser la police spéciale
+  // Index des dialogues qui doivent utiliser la police spéciale
   const InfernalFontDialogues = [0, 1, 2]; // Par exemple, les dialogues 2 et 3
 
   useEffect(() => {
     audio.loop = true; // Boucler la musique de fond
     audio.volume = 0.1; // Réduire le volume de la musique de fond
 
+    // Fonction pour démarrer la musique de fond
     const playMusic = () => {
       if (!musicStarted) {
         const startAudio = new Audio(startSound); // Son de démarrage
@@ -48,6 +50,7 @@ function App() {
       document.removeEventListener('keydown', handleKeyPress);
     };
 
+    // Fonction pour gérer la pression de la touche espace
     const handleKeyPress = (event) => {
       if (event.code === 'Space') {
         playMusic();
@@ -57,6 +60,7 @@ function App() {
     document.addEventListener('click', playMusic);
     document.addEventListener('keydown', handleKeyPress);
 
+    // Afficher le message initial après 10 secondes si la musique n'a pas commencé
     const timer = setTimeout(() => {
       if (!musicStarted) {
         setShowMessage(true); // Afficher le message initial après 10 secondes
@@ -70,6 +74,7 @@ function App() {
     };
   }, [audio, musicStarted]);
 
+  // Fonction pour passer au dialogue suivant
   const handleNextDialogue = useCallback(() => {
     setCurrentDialogue((prev) => (prev + 1) % dialogues.length); // Passer au dialogue suivant
   }, [dialogues.length]);
