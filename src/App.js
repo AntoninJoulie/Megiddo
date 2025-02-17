@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import './App.css';
-import './cosmicBackground.css';
+import './styles/App.css';
+import './styles/cosmicBackground.css';
 import backgroundMusic from './assets/sounds/background-music.mp3';
 import startSound from './assets/sounds/start.mp3';
-import Stars from './Stars';
-import Message from './Message';
-import DialogueBox from './DialogueBox';
+import Stars from './components/Stars/Stars';
+import Message from './components/Message/Message';
+import DialogueBox from './components/DialogueBox/DialogueBox';
 
 function App() {
   const [audio] = useState(new Audio(backgroundMusic)); // État pour l'audio de fond

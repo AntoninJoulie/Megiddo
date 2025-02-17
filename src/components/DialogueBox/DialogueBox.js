@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './DialogueBox.css';
-import typewriterSound from './assets/sounds/typewriter.mp3';
-import clickSound from './assets/sounds/click.mp3';
+import typewriterSound from '../../assets/sounds/typewriter.mp3';
+import clickSound from '../../assets/sounds/click.mp3';
 
 const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue }) => {
   const [displayedText, setDisplayedText] = useState(''); // État pour le texte affiché
