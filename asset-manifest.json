@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Megiddo/static/css/main.0a059a79.css",
+    "main.js": "/Megiddo/static/js/main.ea745da7.js",
+    "static/js/453.a358c7bb.chunk.js": "/Megiddo/static/js/453.a358c7bb.chunk.js",
+    "static/media/background-music.mp3": "/Megiddo/static/media/background-music.3b535bc00a576f2f5d5b.mp3",
+    "static/media/click.mp3": "/Megiddo/static/media/click.5a407c9a482010405be4.mp3",
+    "static/media/typewriter.mp3": "/Megiddo/static/media/typewriter.8abf3e85c995eb4dabbf.mp3",
+    "static/media/start.mp3": "/Megiddo/static/media/start.31f371aa54d6099a48e0.mp3",
+    "index.html": "/Megiddo/index.html",
+    "main.0a059a79.css.map": "/Megiddo/static/css/main.0a059a79.css.map",
+    "main.ea745da7.js.map": "/Megiddo/static/js/main.ea745da7.js.map",
+    "453.a358c7bb.chunk.js.map": "/Megiddo/static/js/453.a358c7bb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a059a79.css",
+    "static/js/main.ea745da7.js"
+  ]
+}
