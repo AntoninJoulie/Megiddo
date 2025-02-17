@@ -23,7 +23,7 @@ function App() {
   ];
 
   // Ajoutez les index des dialogues qui doivent utiliser la police spéciale
-  const specialFontDialogues = [0, 1, 2]; // Par exemple, les dialogues 2 et 3
+  const InfernalFontDialogues = [0, 1, 2]; // Par exemple, les dialogues 2 et 3
 
   useEffect(() => {
     audio.loop = true; // Boucler la musique de fond
@@ -83,7 +83,7 @@ function App() {
         dialogues={dialogues}
         currentDialogue={currentDialogue}
         onNextDialogue={handleNextDialogue}
-        useSpecialFont={specialFontDialogues.includes(currentDialogue)} // Utiliser la nouvelle police pour les dialogues spécifiés
+        useInfernalFont={InfernalFontDialogues.includes(currentDialogue)} // Utiliser la nouvelle police pour les dialogues spécifiés
       />
     </div>
   );

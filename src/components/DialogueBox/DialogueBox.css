@@ -60,7 +60,7 @@
 }
 
 .special-font {
-  font-family: 'SpecialFont', cursive;
+  font-family: 'InfernalFont', cursive;
   font-size: 3vw; /* Augmentez la taille de la police en fonction de la largeur de la fenêtre */
   text-align: center; /* Centre le texte horizontalement */
 }

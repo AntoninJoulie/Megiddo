@@ -3,7 +3,7 @@ import './DialogueBox.css';
 import typewriterSound from '../../assets/sounds/typewriter.mp3';
 import clickSound from '../../assets/sounds/click.mp3';
 
-const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue, useSpecialFont }) => {
+const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue, useInfernalFont }) => {
   const [displayedText, setDisplayedText] = useState(''); // État pour le texte affiché
   const [isComplete, setIsComplete] = useState(false); // État pour savoir si le texte est complètement affiché
   const [isDialogueVisible, setIsDialogueVisible] = useState(false); // État pour savoir si la boîte de dialogue est visible
@@ -69,7 +69,7 @@ const DialogueBox = ({ showDialogue, dialogues, currentDialogue, onNextDialogue,
 
   return (
     showDialogue && (
-      <div className={`dialogue-box ${useSpecialFont ? 'special-font' : ''}`}>
+      <div className={`dialogue-box ${useInfernalFont ? 'special-font' : ''}`}>
         <p>{displayedText}</p>
         {isComplete && <div className="dialogue-triangle"></div>} {/* Afficher le triangle lorsque le texte est complètement affiché */}
       </div>
