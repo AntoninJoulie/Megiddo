@@ -16,7 +16,7 @@ const Message = ({ showMessage, fadeOut }) => {
   return (
     showMessage && (
       <div className={`message ${fadeOut ? 'fade-out' : ''}`}>
-        Click anywhere to start...
+        Click or press spacebar to start...
       </div>
     )
   );

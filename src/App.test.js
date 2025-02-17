@@ -1,4 +1,4 @@
-arg-website/src/App.test.js
+megiddo/src/App.test.js
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
