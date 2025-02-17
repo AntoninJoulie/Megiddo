@@ -1,0 +1,49 @@
+/* Styles pour le composant Message */
+.message {
+    position: fixed; /* Position fixe pour centrer le message */
+    top: 50%; /* Centrer verticalement */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Ajuster pour centrer exactement */
+    font-size: 24px; /* Taille de la police */
+    color: white; /* Couleur du texte */
+    background-color: rgba(0, 0, 0, 0.7); /* Fond noir légèrement transparent */
+    padding: 20px; /* Espacement interne */
+    border-radius: 10px; /* Coins arrondis */
+    opacity: 0; /* Initialement invisible */
+    animation: fadeIn 2s forwards, pulse 3s 2s infinite; /* Animation d'apparition et de pulsation */
+  }
+  
+  /* Animation d'apparition */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Animation de pulsation */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* Classe pour l'animation de disparition */
+  .fade-out {
+    animation: fadeOut 2s forwards; /* Animation de disparition */
+  }
+  
+  /* Animation de disparition */
+  @keyframes fadeOut {
+    from {
+      opacity: var(--start-opacity, 1);
+    }
+    to {
+      opacity: 0;
+    }
+  }

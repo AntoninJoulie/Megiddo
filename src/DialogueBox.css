@@ -1,0 +1,77 @@
+/* Styles pour le composant DialogueBox */
+.dialogue-box {
+    position: fixed; /* Position fixe pour centrer la boîte de dialogue */
+    top: 50%; /* Centrer verticalement */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Ajuster pour centrer exactement */
+    width: 80%; /* Largeur de la boîte de dialogue */
+    height: 30%; /* Hauteur de la boîte de dialogue */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir légèrement transparent */
+    color: white; /* Couleur du texte */
+    padding: 20px; /* Espacement interne */
+    border: 5px solid white; /* Cadre blanc */
+    border-radius: 10px; /* Coins arrondis */
+    display: block; /* Assurez-vous que le rectangle est affiché */
+    opacity: 0; /* Initialement invisible */
+    animation: fadeIn 2s forwards; /* Animation d'apparition */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoutez une ombre pour le rendre plus visible */
+    font-size: 18px; /* Augmentez la taille de la police */
+    overflow: hidden; /* Empêche le texte de dépasser la boîte */
+  }
+  
+  .dialogue-box p {
+    color: white; /* Couleur du texte */
+    margin: 0;
+    font-size: 18px; /* Augmentez la taille de la police */
+    white-space: pre-wrap; /* Permet au texte de passer à la ligne */
+    word-wrap: break-word; /* Permet au texte de passer à la ligne */
+  }
+  
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    animation: bounce 1s infinite; /* Ajoutez une animation pour le faire monter et descendre */
+  }
+  
+  .next-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .next-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Animation d'apparition */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Animation de rebond */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }

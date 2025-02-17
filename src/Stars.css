@@ -1,0 +1,48 @@
+/* Styles pour le composant Stars */
+.stars-container {
+    position: absolute; /* Position absolue pour couvrir tout l'écran */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent; /* Fond transparent */
+  }
+  
+  .star {
+    position: absolute; /* Position absolue pour chaque étoile */
+    background: white; /* Couleur blanche pour les étoiles */
+    border-radius: 50%; /* Forme ronde */
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Effet de brillance */
+    animation: twinkle 2s infinite alternate; /* Animation de scintillement */
+  }
+  
+  .shooting-star {
+    position: absolute; /* Position absolue pour chaque étoile filante */
+    background: white; /* Couleur blanche pour les étoiles filantes */
+    border-radius: 50%; /* Forme ronde */
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Effet de brillance */
+    animation: twinkle 2s infinite alternate, shooting 2s linear; /* Animation de scintillement et de mouvement */
+  }
+  
+  /* Animation de scintillement */
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translate(1px, 1px);
+    }
+  }
+  
+  /* Animation de mouvement pour les étoiles filantes */
+  @keyframes shooting {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--end-x), var(--end-y));
+    }
+  }
