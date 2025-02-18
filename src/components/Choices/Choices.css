@@ -1,0 +1,145 @@
+.choices-container {
+    display: flex;
+    justify-content: space-between; /* Espacer les boutons de manière égale */
+    margin-top: 2rem; /* Augmenter la marge supérieure */
+    width: 100%; /* Prendre toute la largeur disponible */
+    max-width: 1200px; /* Limiter la largeur maximale du conteneur */
+    margin-left: auto; /* Centrer horizontalement */
+    margin-right: auto; /* Centrer horizontalement */
+    transition: opacity 0.5s ease-out; /* Transition pour l'effet de fondu */
+  }
+  
+  .choices-container.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  .choices-container.fade-out {
+    opacity: 1;
+    animation: fadeOut 0.5s forwards;
+  }
+  
+  .choice-button {
+    position: relative; /* Position relative pour placer le triangle */
+    padding: 1rem 2rem; /* Augmenter la taille des boutons */
+    font-size: 1.5rem; /* Augmenter la taille de la police */
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir légèrement transparent */
+    color: white;
+    border: 0.2vw solid white; /* Cadre blanc plus fin */
+    border-radius: 1vw; /* Coins arrondis */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition pour le mouvement et l'ombre */
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5); /* Ajoutez une ombre pour le rendre plus visible */
+    font-family: 'Press Start 2P', cursive; /* Utiliser la police Press Start 2P */
+    width: 100%; /* Rendre les boutons responsives */
+    max-width: 300px; /* Limiter la largeur maximale des boutons */
+    margin: 0 2rem; /* Ajouter de la marge pour espacer les boutons */
+  }
+  
+  .choice-button.pressed {
+    /* Supprimer l'effet de rabaissement */
+  }
+  
+  .choice-button.hover {
+    transform: translateY(-0.5rem); /* Déplacer le bouton vers le haut au survol */
+    animation: illuminate 0.3s forwards, sparkle 1s infinite 0.3s; /* Ajouter l'animation d'illumination avant le scintillement */
+  }
+  
+  .choice-button.selected {
+    transform: translateY(0.5rem); /* Déplacer le bouton vers le bas lorsqu'il est sélectionné */
+    animation: extinguish 0.3s forwards; /* Ajouter l'animation d'extinction */
+  }
+  
+  .choice-button.selected::before {
+    display: none; /* Faire disparaître le triangle instantanément */
+  }
+  
+  .choice-button:hover::before,
+  .choice-button.hover::before {
+    content: '';
+    position: absolute;
+    left: -2rem; /* Positionner le triangle à gauche du bouton */
+    top: 50%;
+    transform: translateY(-50%); /* Centrer verticalement */
+    width: 0;
+    height: 0;
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
+    border-left: 0.5rem solid white; /* Triangle pointant vers la droite */
+    animation: slideIn 0.5s forwards, triangleBounce 1s infinite; /* Animation de déplacement et de rebond */
+  }
+  
+  /* Animation de scintillement */
+  @keyframes sparkle {
+    0%, 100% {
+      box-shadow: 0 0 1.5vw rgba(255, 255, 255, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 2vw rgba(255, 255, 255, 1);
+    }
+  }
+  
+  /* Animation de déplacement du triangle */
+  @keyframes slideIn {
+    from {
+      left: -3rem; /* Départ plus à gauche */
+      opacity: 0; /* Départ transparent */
+    }
+    to {
+      left: -2rem; /* Arrivée à gauche du bouton */
+      opacity: 1; /* Arrivée opaque */
+    }
+  }
+  
+  /* Animation de rebond du triangle */
+  @keyframes triangleBounce {
+    0%, 100% {
+      transform: translateY(-50%) translateX(0);
+    }
+    50% {
+      transform: translateY(-50%) translateX(-0.5rem);
+    }
+  }
+  
+  /* Animation d'illumination progressive */
+  @keyframes illuminate {
+    from {
+      box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    }
+    to {
+      box-shadow: 0 0 1.5vw rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  /* Animation d'extinction progressive */
+  @keyframes extinguish {
+    from {
+      box-shadow: 0 0 1.5vw rgba(255, 255, 255, 0.8);
+    }
+    to {
+      box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+  .choice-button:not(.hover) {
+    animation: extinguish 0.3s forwards; /* Ajouter l'animation d'extinction lorsque le curseur n'est plus sur le bouton */
+  }
+  
+  /* Animation de fondu */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }

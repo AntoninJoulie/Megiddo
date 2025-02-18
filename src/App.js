@@ -7,6 +7,16 @@ import Stars from './components/Stars/Stars';
 import Message from './components/Message/Message';
 import DialogueBox from './components/DialogueBox/DialogueBox';
 
+const dialogues = {
+  0: { text: "...", choices: null, next: 1 },
+  1: { text: "Hello?", choices: null, next: 2 },
+  2: { text: "Do you understand me?", choices: null, next: 3 },
+  3: { text: "Do you want to continue?", choices: ["Yes", "No"], next: { Yes: 4, No: 5} },
+  4: { text: "Cool", choices: null, next: 6 },
+  5: { text: "Not cool", choices: null, next: 6 },
+  6: { text: "End of the dialogue", choices: null, next: 0 }
+};
+
 function App() {
   const [audio] = useState(new Audio(backgroundMusic)); // État pour l'audio de fond
   const [showMessage, setShowMessage] = useState(false); // État pour afficher le message initial
@@ -14,14 +24,6 @@ function App() {
   const [musicStarted, setMusicStarted] = useState(false); // État pour savoir si la musique a commencé
   const [showDialogue, setShowDialogue] = useState(false); // État pour afficher la boîte de dialogue
   const [currentDialogue, setCurrentDialogue] = useState(0); // État pour le dialogue actuel
-
-  // Liste des dialogues
-  const dialogues = [
-    "...",
-    "Hello?",
-    "Do you understand me?",
-    "Do you want to continue? (Yes/No)"
-  ];
 
   // Index des dialogues qui doivent utiliser la police spéciale
   const InfernalFontDialogues = [0, 1, 2]; // Par exemple, les dialogues 2 et 3
@@ -75,9 +77,12 @@ function App() {
   }, [audio, musicStarted]);
 
   // Fonction pour passer au dialogue suivant
-  const handleNextDialogue = useCallback(() => {
-    setCurrentDialogue((prev) => (prev + 1) % dialogues.length); // Passer au dialogue suivant
-  }, [dialogues.length]);
+  const handleNextDialogue = useCallback((choice) => {
+    setCurrentDialogue((prev) => {
+      const next = dialogues[prev].next;
+      return typeof next === 'object' ? next[choice] : next;
+    });
+  }, []);
 
   return (
     <div className="App">

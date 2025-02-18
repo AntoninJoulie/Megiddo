@@ -74,6 +74,16 @@
   letter-spacing: 0.3vw; /* Augmentez l'espacement entre les lettres */
 }
 
+.choices-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  position: fixed;
+  top: 70%; /* Positionner en dessous de la boîte de dialogue */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Animation d'apparition */
 @keyframes dialogueFadeIn {
   from {
