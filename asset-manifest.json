@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Megiddo/static/css/main.fbc116e7.css",
-    "main.js": "/Megiddo/static/js/main.62ac4e8e.js",
+    "main.css": "/Megiddo/static/css/main.c7a4073d.css",
+    "main.js": "/Megiddo/static/js/main.20e95338.js",
     "static/js/453.a358c7bb.chunk.js": "/Megiddo/static/js/453.a358c7bb.chunk.js",
     "static/media/background-music.mp3": "/Megiddo/static/media/background-music.3b535bc00a576f2f5d5b.mp3",
     "static/media/click.mp3": "/Megiddo/static/media/click.5a407c9a482010405be4.mp3",
@@ -9,12 +9,12 @@
     "static/media/start.mp3": "/Megiddo/static/media/start.31f371aa54d6099a48e0.mp3",
     "static/media/InfernalFont-Regular.ttf": "/Megiddo/static/media/InfernalFont-Regular.bb1066a2428ec8d9e3ff.ttf",
     "index.html": "/Megiddo/index.html",
-    "main.fbc116e7.css.map": "/Megiddo/static/css/main.fbc116e7.css.map",
-    "main.62ac4e8e.js.map": "/Megiddo/static/js/main.62ac4e8e.js.map",
+    "main.c7a4073d.css.map": "/Megiddo/static/css/main.c7a4073d.css.map",
+    "main.20e95338.js.map": "/Megiddo/static/js/main.20e95338.js.map",
     "453.a358c7bb.chunk.js.map": "/Megiddo/static/js/453.a358c7bb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fbc116e7.css",
-    "static/js/main.62ac4e8e.js"
+    "static/css/main.c7a4073d.css",
+    "static/js/main.20e95338.js"
   ]
 }
