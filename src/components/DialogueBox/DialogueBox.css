@@ -12,6 +12,7 @@
   border: 0.5vw solid white; /* Cadre blanc en fonction de la largeur de la fenêtre */
   border-radius: 1vw; /* Coins arrondis en fonction de la largeur de la fenêtre */
   display: flex; /* Utiliser Flexbox */
+  flex-direction: column; /* Disposer les éléments verticalement */
   justify-content: center; /* Centrer horizontalement */
   align-items: center; /* Centrer verticalement */
   opacity: 0; /* Initialement invisible */
@@ -28,6 +29,7 @@
   white-space: pre-wrap; /* Permet au texte de passer à la ligne */
   word-wrap: break-word; /* Permet au texte de passer à la ligne */
   line-height: 2.5; /* Augmentez l'espacement entre les lignes */
+  text-align: center; /* Centrer le texte horizontalement */
 }
 
 .dialogue-triangle {
@@ -101,5 +103,24 @@
   }
   50% {
     transform: translateY(-0.5vw);
+  }
+}
+
+/* Media queries pour ajuster la taille de la police sur les petits écrans */
+@media (max-width: 600px) {
+  .dialogue-box {
+    font-size: 4vw; /* Augmenter la taille de la police pour les petits écrans */
+  }
+
+  .dialogue-box p {
+    font-size: 4vw; /* Augmenter la taille de la police pour les petits écrans */
+  }
+
+  .special-font {
+    font-size: 5vw; /* Augmenter la taille de la police pour les petits écrans */
+  }
+
+  .special-font p {
+    font-size: 5vw; /* Augmenter la taille de la police pour les petits écrans */
   }
 }

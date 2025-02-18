@@ -34,10 +34,8 @@
     width: 100%; /* Rendre les boutons responsives */
     max-width: 300px; /* Limiter la largeur maximale des boutons */
     margin: 0 2rem; /* Ajouter de la marge pour espacer les boutons */
-  }
-  
-  .choice-button.pressed {
-    /* Supprimer l'effet de rabaissement */
+    outline: none; /* Supprimer l'effet de focus */
+    -webkit-tap-highlight-color: transparent; /* Supprimer la couleur de surbrillance sur les appareils mobiles */
   }
   
   .choice-button.hover {
@@ -141,5 +139,22 @@
     }
     to {
       opacity: 0;
+    }
+  }
+  
+  /* Media queries pour les appareils mobiles et tablettes */
+  @media (max-width: 768px) {
+    .choice-button:hover::before,
+    .choice-button.hover::before {
+      display: none; /* Supprimer le triangle en mode mobile et tablette */
+    }
+  
+    .choice-button.hover {
+      transform: none; /* Ne pas élever les boutons par défaut en mode mobile et tablette */
+      animation: none; /* Supprimer le scintillement en mode mobile et tablette */
+    }
+  
+    .choice-button:focus {
+      outline: 0.2vw solid #FFD700; /* Ajouter un outline avec la couleur des étoiles en mode mobile et tablette */
     }
   }
