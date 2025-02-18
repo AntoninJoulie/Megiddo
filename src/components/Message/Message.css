@@ -11,6 +11,7 @@
   border-radius: 10px; /* Coins arrondis */
   opacity: 0; /* Initialement invisible */
   animation: messageFadeIn 2s forwards, messagePulse 3s 2s infinite; /* Animation d'apparition et de pulsation */
+  white-space: nowrap; /* Empêcher le texte de passer à la ligne */
 }
 
 /* Animation d'apparition */
@@ -45,5 +46,31 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+/* Media queries pour ajuster la taille de la police sur les petits écrans */
+@media (max-width: 600px) {
+  .message {
+    font-size: 4vw; /* Augmenter la taille de la police pour les petits écrans */
+    white-space: normal; /* Permettre au texte de passer à la ligne sur les petits écrans */
+  }
+
+  .desktop-message {
+    display: none; /* Masquer le message de bureau sur les petits écrans */
+  }
+
+  .mobile-message {
+    display: block; /* Afficher le message mobile sur les petits écrans */
+  }
+}
+
+@media (min-width: 601px) {
+  .mobile-message {
+    display: none; /* Masquer le message mobile sur les écrans de bureau */
+  }
+
+  .desktop-message {
+    display: block; /* Afficher le message de bureau sur les écrans de bureau */
   }
 }

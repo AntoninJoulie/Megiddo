@@ -16,7 +16,8 @@ const Message = ({ showMessage, fadeOut }) => {
   return (
     showMessage && (
       <div className={`message ${fadeOut ? 'fade-out' : ''}`}>
-        Click or press spacebar to start...
+        <span className="desktop-message">Click or press spacebar to start...</span>
+        <span className="mobile-message">Touch your screen to start...</span>
       </div>
     )
   );
