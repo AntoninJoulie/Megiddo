@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import "./global.css"; /* Importer les styles globaux */
 
 body,
 html {
@@ -6,5 +7,5 @@ html {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  font-family: "Press Start 2P", cursive; /* Utilisez la police pixelisée */
+  font-family: "Press Start 2P", cursive;
 }

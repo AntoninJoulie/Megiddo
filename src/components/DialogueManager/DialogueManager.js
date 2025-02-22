@@ -18,7 +18,8 @@ const DialogueManager = ({ showDialogue, name }) => {
   );
 
   return (
-    showDialogue && name && (
+    showDialogue &&
+    name && (
       <DialogueBox
         showDialogue={showDialogue}
         dialogues={dialoguesData}

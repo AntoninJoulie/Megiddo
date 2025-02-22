@@ -40,7 +40,10 @@ const LoadingScreen = ({ onLoadingComplete }) => {
   return (
     <div className={`loading-screen ${fadeOut ? "fade-out" : ""}`}>
       <div className="loading-bar">
-        <div className="loading-progress" style={{ width: `${progress}%` }}></div>
+        <div
+          className="loading-progress"
+          style={{ width: `${progress}%` }}
+        ></div>
       </div>
       <div className="loading-text">{loadingText}</div>
       <div className="loading-percentage">{Math.round(progress)}%</div>

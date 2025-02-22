@@ -16,7 +16,11 @@ const NameInput = ({ onNameSubmit, fadeOut }) => {
   };
 
   return (
-    <div className={`name-input-container ${fadeOut ? "fade-out" : ""}`}>
+    <div
+      className={`name-input-container centered-container dialogue-box ${
+        fadeOut ? "fade-out" : ""
+      }`}
+    >
       <h2>Who are you?</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -26,7 +30,9 @@ const NameInput = ({ onNameSubmit, fadeOut }) => {
           placeholder="Enter your name"
           autoFocus
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className="common-button">
+          Submit
+        </button>
       </form>
     </div>
   );

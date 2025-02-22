@@ -45,19 +45,27 @@ function App() {
     }, 3000); // Attendre 3 secondes avant d'afficher le dialogue
   };
 
+  // Définir la fonction onMessageComplete
+  const handleMessageComplete = () => {
+    setFadeOutMessage(true);
+  };
+
   return (
     <div className="App">
       <Stars />
       {showMessage && (
-        <Message showMessage={showMessage} fadeOut={fadeOutMessage} />
-      )}
-      {showNameInput && (
-        <NameInput
-          onNameSubmit={handleNameSubmit}
-          fadeOut={fadeOutNameInput}
+        <Message
+          showMessage={showMessage}
+          fadeOut={fadeOutMessage}
+          onMessageComplete={handleMessageComplete} // Passer la fonction onMessageComplete
         />
       )}
-      {showLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+      {showNameInput && (
+        <NameInput onNameSubmit={handleNameSubmit} fadeOut={fadeOutNameInput} />
+      )}
+      {showLoading && (
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+      )}
       {loadingComplete && showDialogue && name && (
         <DialogueManager
           showDialogue={showDialogue}
@@ -71,7 +79,7 @@ function App() {
         setFadeOut={setFadeOutMessage}
         setShowMessage={setShowMessage}
         setShowDialogue={setShowDialogue}
-        loadingComplete={loadingComplete} // Passer l'état de chargement complet
+        loadingComplete={loadingComplete}
       />
     </div>
   );

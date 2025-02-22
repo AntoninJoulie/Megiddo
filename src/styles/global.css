@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* Styles globaux pour les éléments communs */
+
+/* Conteneur centré */
+.centered-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Boîte de dialogue */
+.dialogue-box {
+  width: 80vw;
+  height: 30vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2vw;
+  border: 0.5vw solid white;
+  border-radius: 1vw;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+  font-size: 2vw;
+  overflow: hidden;
+  font-family: "Press Start 2P", cursive; /* Utiliser la police Press Start 2P */
+}
+
+/* Animation de fondu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Animation de rebond */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5vw);
+  }
+}
+
+/* Bouton commun */
+.common-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s;
+  font-family: "Press Start 2P", cursive; /* Utiliser la police Press Start 2P */
+}
+
+.common-button:hover {
+  background-color: #0056b3;
+}

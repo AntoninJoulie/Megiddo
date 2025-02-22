@@ -1,3 +1,7 @@
+/* Importer les styles globaux */
+@import "../../styles/global.css";
+
+/* Styles spécifiques pour le composant Choices */
 .choices-container {
   display: flex;
   justify-content: space-between; /* Espacer les boutons de manière égale */

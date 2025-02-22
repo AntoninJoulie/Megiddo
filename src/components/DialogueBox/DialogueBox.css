@@ -1,35 +1,19 @@
-/* Styles pour le composant DialogueBox */
+/* Importer les styles globaux */
+@import "../../styles/global.css";
+
+/* Styles spécifiques pour le composant DialogueBox */
 .dialogue-box {
-  position: fixed; /* Position fixe pour centrer la boîte de dialogue */
-  top: 40%; /* Centrer verticalement */
-  left: 50%; /* Centrer horizontalement */
-  transform: translate(-50%, -50%); /* Ajuster pour centrer exactement */
-  width: 80vw; /* Largeur de la boîte de dialogue en fonction de la largeur de la fenêtre */
-  height: 30vh; /* Hauteur de la boîte de dialogue en fonction de la hauteur de la fenêtre */
-  background-color: rgba(0, 0, 0, 0.8); /* Fond noir légèrement transparent */
-  color: white; /* Couleur du texte */
-  padding: 2vw; /* Espacement interne en fonction de la largeur de la fenêtre */
-  border: 0.5vw solid white; /* Cadre blanc en fonction de la largeur de la fenêtre */
-  border-radius: 1vw; /* Coins arrondis en fonction de la largeur de la fenêtre */
-  display: flex; /* Utiliser Flexbox */
-  flex-direction: column; /* Disposer les éléments verticalement */
-  justify-content: center; /* Centrer horizontalement */
-  align-items: center; /* Centrer verticalement */
-  opacity: 0; /* Initialement invisible */
-  animation: dialogueFadeIn 2s forwards; /* Animation d'apparition */
-  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5); /* Ajoutez une ombre pour le rendre plus visible */
-  font-size: 2vw; /* Taille de la police par défaut en fonction de la largeur de la fenêtre */
-  overflow: hidden; /* Empêche le texte de dépasser la boîte */
+  animation: dialogueFadeIn 2s forwards;
 }
 
 .dialogue-box p {
-  color: white; /* Couleur du texte */
+  color: white;
   margin: 0;
-  font-size: 2vw; /* Taille de la police par défaut en fonction de la largeur de la fenêtre */
-  white-space: pre-wrap; /* Permet au texte de passer à la ligne */
-  word-wrap: break-word; /* Permet au texte de passer à la ligne */
-  line-height: 2.5; /* Augmentez l'espacement entre les lignes */
-  text-align: center; /* Centrer le texte horizontalement */
+  font-size: 2vw;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 2.5;
+  text-align: center;
 }
 
 .dialogue-triangle {
@@ -41,39 +25,22 @@
   position: absolute;
   bottom: 1vw;
   right: 1vw;
-  animation: dialogueBounce 1s infinite; /* Ajoutez une animation pour le faire monter et descendre */
-}
-
-.dialogue-next-button {
-  position: absolute;
-  bottom: 1vw;
-  right: 1vw;
-  padding: 1vw 2vw;
-  font-size: 1.5vw; /* Taille de la police en fonction de la largeur de la fenêtre */
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 0.5vw;
-  cursor: pointer;
-}
-
-.dialogue-next-button:hover {
-  background-color: #0056b3;
+  animation: bounce 1s infinite;
 }
 
 .infernal-font {
   font-family: "InfernalFont", cursive;
-  font-size: 3vw; /* Augmentez la taille de la police en fonction de la largeur de la fenêtre */
-  text-align: center; /* Centre le texte horizontalement */
+  font-size: 3vw;
+  text-align: center;
 }
 
 .infernal-font p {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3vw; /* Augmentez la taille de la police en fonction de la largeur de la fenêtre */
-  line-height: 1.5; /* Augmentez l'espacement entre les lignes */
-  letter-spacing: 0.3vw; /* Augmentez l'espacement entre les lettres */
+  font-size: 3vw;
+  line-height: 1.5;
+  letter-spacing: 0.3vw;
 }
 
 .choices-wrapper {
@@ -81,47 +48,26 @@
   justify-content: center;
   margin-top: 2rem;
   position: fixed;
-  top: 70%; /* Positionner en dessous de la boîte de dialogue */
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* Animation d'apparition */
-@keyframes dialogueFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Animation de rebond */
-@keyframes dialogueBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-0.5vw);
-  }
 }
 
 /* Media queries pour ajuster la taille de la police sur les petits écrans */
 @media (max-width: 600px) {
   .dialogue-box {
-    font-size: 4vw; /* Augmenter la taille de la police pour les petits écrans */
+    font-size: 4vw;
   }
 
   .dialogue-box p {
-    font-size: 4vw; /* Augmenter la taille de la police pour les petits écrans */
+    font-size: 4vw;
   }
 
   .infernal-font {
-    font-size: 5vw; /* Augmenter la taille de la police pour les petits écrans */
+    font-size: 5vw;
   }
 
   .infernal-font p {
-    font-size: 5vw; /* Augmenter la taille de la police pour les petits écrans */
+    font-size: 5vw;
   }
 }

@@ -88,23 +88,24 @@ const DialogueBox = ({
     showDialogue && (
       <>
         <div
-          className={`dialogue-box ${useInfernalFont ? "infernal-font" : ""}`}
+          className={`dialogue-box centered-container ${
+            useInfernalFont ? "infernal-font" : ""
+          }`}
         >
           <p>{displayedText}</p>
           {isComplete && !dialogues[currentDialogue].choices && (
             <div className="dialogue-triangle"></div>
           )}
         </div>
-        {isComplete &&
-          dialogues[currentDialogue].choices && (
-            <div className="choices-wrapper">
-              <Choices
-                choices={dialogues[currentDialogue].choices}
-                onChoiceSelect={handleChoiceSelect}
-                infernalChoice={infernalChoice}
-              />
-            </div>
-          )}
+        {isComplete && dialogues[currentDialogue].choices && (
+          <div className="choices-wrapper">
+            <Choices
+              choices={dialogues[currentDialogue].choices}
+              onChoiceSelect={handleChoiceSelect}
+              infernalChoice={infernalChoice}
+            />
+          </div>
+        )}
       </>
     )
   );

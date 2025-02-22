@@ -1,4 +1,7 @@
-/* Styles pour le composant Message */
+/* Importer les styles globaux */
+@import "../../styles/global.css";
+
+/* Styles spécifiques pour le composant Message */
 .message {
   position: fixed; /* Position fixe pour centrer le message */
   top: 50%; /* Centrer verticalement */
