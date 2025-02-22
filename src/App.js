@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import './styles/App.css';
-import './styles/cosmicBackground.css';
-import Stars from './components/Stars/Stars';
-import Message from './components/Message/Message';
-import DialogueManager from './components/DialogueManager/DialogueManager';
-import SoundManager from './components/SoundManager/SoundManager';
+import React, { useState } from "react";
+import "./styles/App.css";
+import "./styles/cosmicBackground.css";
+import Stars from "./components/Stars/Stars";
+import Message from "./components/Message/Message";
+import DialogueManager from "./components/DialogueManager/DialogueManager";
+import SoundManager from "./components/SoundManager/SoundManager";
 
 function App() {
   const [showMessage, setShowMessage] = useState(false); // État pour afficher le message initial
@@ -16,7 +16,10 @@ function App() {
     <div className="App">
       <Stars />
       <Message showMessage={showMessage} fadeOut={fadeOut} />
-      <DialogueManager showDialogue={showDialogue} setShowDialogue={setShowDialogue} />
+      <DialogueManager
+        showDialogue={showDialogue}
+        setShowDialogue={setShowDialogue}
+      />
       <SoundManager
         musicStarted={musicStarted}
         setMusicStarted={setMusicStarted}

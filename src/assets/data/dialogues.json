@@ -1,9 +1,35 @@
 {
-    "0": { "text": "...", "choices": null, "next": 1 },
-    "1": { "text": "Hello?", "choices": null, "next": 2 },
-    "2": { "text": "Do you understand me?", "choices": null, "next": 3 },
-    "3": { "text": "Do you want to continue?", "choices": ["Yes", "No"], "next": { "Yes": 4, "No": 5 } },
-    "4": { "text": "Cool", "choices": null, "next": 6 },
-    "5": { "text": "Not cool", "choices": null, "next": 6 },
-    "6": { "text": "End of the dialogue", "choices": null, "next": 0 }
+  "0": { "text": "...", "choices": null, "next": 1, "useInfernalFont": true },
+  "1": {
+    "text": "Hello, {name}?",
+    "choices": null,
+    "next": 2,
+    "useInfernalFont": true
+  },
+  "2": {
+    "text": "Do you understand me, {name}?",
+    "choices": null,
+    "next": 3,
+    "useInfernalFont": true
+  },
+  "3": {
+    "text": "Do you want to continue, {name}?",
+    "choices": ["Yes", "No"],
+    "infernalChoice": ["Yes"],
+    "next": { "Yes": 4, "No": 5 },
+    "useInfernalFont": false
+  },
+  "4": { "text": "Cool, {name}", "choices": null, "next": 6, "useInfernalFont": false },
+  "5": {
+    "text": "Not cool, {name}",
+    "choices": null,
+    "next": 6,
+    "useInfernalFont": false
+  },
+  "6": {
+    "text": "End of the dialogue, {name}",
+    "choices": null,
+    "next": 0,
+    "useInfernalFont": false
   }
+}

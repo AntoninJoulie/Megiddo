@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import DialogueBox from '../DialogueBox/DialogueBox';
-import dialoguesData from '../../assets/data/dialogues.json'; // Importer les dialogues
-import { InfernalFontDialogues } from '../../config'; // Importer les constantes
+import React, { useState, useCallback } from "react";
+import DialogueBox from "../DialogueBox/DialogueBox";
+import dialoguesData from "../../assets/data/dialogues.json"; // Importer les dialogues
 
 const DialogueManager = ({ showDialogue, setShowDialogue }) => {
   const [currentDialogue, setCurrentDialogue] = useState(0); // État pour le dialogue actuel
@@ -10,7 +9,7 @@ const DialogueManager = ({ showDialogue, setShowDialogue }) => {
   const handleNextDialogue = useCallback((choice) => {
     setCurrentDialogue((prev) => {
       const next = dialoguesData[prev].next;
-      return typeof next === 'object' ? next[choice] : next;
+      return typeof next === "object" ? next[choice] : next;
     });
   }, []);
 
@@ -20,7 +19,8 @@ const DialogueManager = ({ showDialogue, setShowDialogue }) => {
       dialogues={dialoguesData}
       currentDialogue={currentDialogue}
       onNextDialogue={handleNextDialogue}
-      useInfernalFont={InfernalFontDialogues.includes(currentDialogue)} // Utiliser la nouvelle police pour les dialogues spécifiés
+      useInfernalFont={dialoguesData[currentDialogue].useInfernalFont} // Utiliser la nouvelle police pour les dialogues spécifiés
+      infernalChoice={dialoguesData[currentDialogue].infernalChoice} // Passer le choix infernal
     />
   );
 };

@@ -1,10 +1,21 @@
-import { useEffect, useState } from 'react';
-import backgroundMusic from '../../assets/sounds/background-music.mp3';
-import startSound from '../../assets/sounds/start.mp3';
-import { backgroundMusicVolume, startSoundVolume, initialMessageDelay, dialogueStartDelay } from '../../config';
-import { playSound } from '../../utils';
+import { useEffect, useState } from "react";
+import backgroundMusic from "../../assets/sounds/background-music.mp3";
+import startSound from "../../assets/sounds/start.mp3";
+import {
+  backgroundMusicVolume,
+  startSoundVolume,
+  initialMessageDelay,
+  dialogueStartDelay,
+} from "../../config";
+import { playSound } from "../../utils";
 
-const SoundManager = ({ musicStarted, setMusicStarted, setFadeOut, setShowMessage, setShowDialogue }) => {
+const SoundManager = ({
+  musicStarted,
+  setMusicStarted,
+  setFadeOut,
+  setShowMessage,
+  setShowDialogue,
+}) => {
   const [audio] = useState(new Audio(backgroundMusic)); // État pour l'audio de fond
 
   useEffect(() => {
@@ -25,19 +36,19 @@ const SoundManager = ({ musicStarted, setMusicStarted, setFadeOut, setShowMessag
           }, dialogueStartDelay);
         }, 2000); // Démarrer la musique de fond 2 secondes après le son de démarrage
       }
-      document.removeEventListener('click', playMusic);
-      document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener("click", playMusic);
+      document.removeEventListener("keydown", handleKeyPress);
     };
 
     // Fonction pour gérer la pression de la touche espace
     const handleKeyPress = (event) => {
-      if (event.code === 'Space') {
+      if (event.code === "Space") {
         playMusic();
       }
     };
 
-    document.addEventListener('click', playMusic);
-    document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener("click", playMusic);
+    document.addEventListener("keydown", handleKeyPress);
 
     // Afficher le message initial après 10 secondes si la musique n'a pas commencé
     const timer = setTimeout(() => {
@@ -48,10 +59,17 @@ const SoundManager = ({ musicStarted, setMusicStarted, setFadeOut, setShowMessag
 
     return () => {
       clearTimeout(timer);
-      document.removeEventListener('click', playMusic);
-      document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener("click", playMusic);
+      document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [audio, musicStarted, setFadeOut, setShowMessage, setShowDialogue, setMusicStarted]);
+  }, [
+    audio,
+    musicStarted,
+    setFadeOut,
+    setShowMessage,
+    setShowDialogue,
+    setMusicStarted,
+  ]);
 
   return null;
 };

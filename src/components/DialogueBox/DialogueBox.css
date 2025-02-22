@@ -61,13 +61,13 @@
   background-color: #0056b3;
 }
 
-.special-font {
-  font-family: 'InfernalFont', cursive;
+.infernal-font {
+  font-family: "InfernalFont", cursive;
   font-size: 3vw; /* Augmentez la taille de la police en fonction de la largeur de la fenêtre */
   text-align: center; /* Centre le texte horizontalement */
 }
 
-.special-font p {
+.infernal-font p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,8 @@
 
 /* Animation de rebond */
 @keyframes dialogueBounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -116,11 +117,11 @@
     font-size: 4vw; /* Augmenter la taille de la police pour les petits écrans */
   }
 
-  .special-font {
+  .infernal-font {
     font-size: 5vw; /* Augmenter la taille de la police pour les petits écrans */
   }
 
-  .special-font p {
+  .infernal-font p {
     font-size: 5vw; /* Augmenter la taille de la police pour les petits écrans */
   }
 }

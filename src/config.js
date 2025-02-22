@@ -1,4 +1,3 @@
-export const InfernalFontDialogues = [0, 1, 2]; // Dialogues qui utilisent la police spéciale
 export const typewriterSoundVolume = 0.2; // Volume du son de la machine à écrire
 export const clickSoundVolume = 0.2; // Volume du son de clic
 export const backgroundMusicVolume = 0.1; // Volume de la musique de fond
