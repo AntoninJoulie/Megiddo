@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./DialogueBox.css";
+import Choices from "../Choices/Choices";
 import typewriterSound from "../../assets/sounds/typewriter.mp3";
 import clickSound from "../../assets/sounds/click.mp3";
-import Choices from "../Choices/Choices";
+import { typewriterSoundVolume, clickSoundVolume } from "../../config";
+import { playSound } from "../../utils";
 
 const DialogueBox = ({
   showDialogue,
@@ -11,59 +13,53 @@ const DialogueBox = ({
   onNextDialogue,
   useInfernalFont,
   infernalChoice,
+  currentText, // Recevoir le texte actuel avec le nom remplacé
 }) => {
-  const [displayedText, setDisplayedText] = useState(""); // État pour le texte affiché
-  const [isComplete, setIsComplete] = useState(false); // État pour savoir si le texte est complètement affiché
-  const [isDialogueVisible, setIsDialogueVisible] = useState(false); // État pour savoir si la boîte de dialogue est visible
-  const [disableNext, setDisableNext] = useState(false); // État pour désactiver temporairement les gestionnaires de clic et de pression de touche
+  const [displayedText, setDisplayedText] = useState("");
+  const [isComplete, setIsComplete] = useState(false);
+  const [isDialogueVisible, setIsDialogueVisible] = useState(false);
+  const [disableNext, setDisableNext] = useState(false);
 
   useEffect(() => {
     if (showDialogue) {
-      const text = dialogues[currentDialogue].text; // Texte du dialogue actuel
-      setDisplayedText(""); // Réinitialiser le texte affiché
-      setIsComplete(false); // Réinitialiser l'état de complétion
-      setIsDialogueVisible(false); // Réinitialiser la visibilité de la boîte de dialogue
-      setDisableNext(false); // Réinitialiser l'état de désactivation des gestionnaires
-      let index = 0; // Index pour parcourir le texte
-      const audio = new Audio(typewriterSound); // Son de la machine à écrire
-      audio.volume = 0.2; // Baisser le volume de l'écriture
+      const text = currentText; // Utiliser le texte actuel
+      setDisplayedText("");
+      setIsComplete(false);
+      setIsDialogueVisible(false);
+      setDisableNext(false);
+      let index = 0;
 
-      // Intervalle pour afficher le texte lettre par lettre
       const interval = setInterval(() => {
         setDisplayedText((prev) => {
-          const nextText = text.slice(0, index + 1); // Prochaine lettre à afficher
+          const nextText = text.slice(0, index + 1);
           index++;
           if (index <= text.length) {
-            audio.currentTime = 0; // Rewind to the start
-            audio.play(); // Jouer le son de la machine à écrire
+            playSound(typewriterSound, typewriterSoundVolume);
           }
           if (index === text.length) {
-            clearInterval(interval); // Arrêter l'intervalle lorsque le texte est complètement affiché
-            setIsComplete(true); // Marquer le texte comme complètement affiché
-            setIsDialogueVisible(true); // Rendre la boîte de dialogue visible
+            clearInterval(interval);
+            setIsComplete(true);
+            setIsDialogueVisible(true);
           }
           return nextText;
         });
-      }, 50); // Vitesse accélérée (50ms par lettre)
+      }, 50);
 
-      return () => clearInterval(interval); // Nettoyer l'intervalle lorsque le composant est démonté
+      return () => clearInterval(interval);
     }
-  }, [showDialogue, dialogues, currentDialogue]);
+  }, [showDialogue, currentText]);
 
   const handleChoiceSelect = (choice) => {
-    setDisableNext(true); // Désactiver temporairement les gestionnaires de clic et de pression de touche
+    setDisableNext(true);
     onNextDialogue(choice);
   };
 
-  // Gestionnaire de clic pour passer au dialogue suivant
   const handleNextClick = useCallback(() => {
     if (!isDialogueVisible || dialogues[currentDialogue].choices || disableNext)
       return;
 
-    const clickAudio = new Audio(clickSound); // Son de clic
-    clickAudio.volume = 0.2; // Baisser le volume du clic
-    clickAudio.play(); // Jouer le son de clic
-    onNextDialogue(); // Appeler la fonction pour passer au dialogue suivant
+    playSound(clickSound, clickSoundVolume);
+    onNextDialogue();
   }, [
     onNextDialogue,
     isDialogueVisible,
@@ -73,19 +69,18 @@ const DialogueBox = ({
   ]);
 
   useEffect(() => {
-    // Gestionnaire de pression de touche pour passer au dialogue suivant avec la barre d'espace
     const handleKeyPress = (event) => {
       if (event.code === "Space") {
         handleNextClick();
       }
     };
 
-    document.addEventListener("keydown", handleKeyPress); // Ajouter l'écouteur d'événement pour la pression de touche
-    document.addEventListener("click", handleNextClick); // Ajouter l'écouteur d'événement pour le clic
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("click", handleNextClick);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyPress); // Retirer l'écouteur d'événement pour la pression de touche
-      document.removeEventListener("click", handleNextClick); // Retirer l'écouteur d'événement pour le clic
+      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener("click", handleNextClick);
     };
   }, [handleNextClick]);
 
@@ -97,16 +92,16 @@ const DialogueBox = ({
         >
           <p>{displayedText}</p>
           {isComplete && !dialogues[currentDialogue].choices && (
-            <div className="dialogue-triangle"></div> // Afficher le triangle lorsque le texte est complètement affiché et qu'il n'y a pas de choix
+            <div className="dialogue-triangle"></div>
           )}
         </div>
         {isComplete &&
-          dialogues[currentDialogue].choices && ( // Afficher les choix si disponibles
+          dialogues[currentDialogue].choices && (
             <div className="choices-wrapper">
               <Choices
-                choices={dialogues[currentDialogue].choices} // Remplacez par les choix appropriés
+                choices={dialogues[currentDialogue].choices}
                 onChoiceSelect={handleChoiceSelect}
-                infernalChoice={infernalChoice} // Spécifiez le choix qui doit utiliser la police infernale
+                infernalChoice={infernalChoice}
               />
             </div>
           )}

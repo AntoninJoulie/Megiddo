@@ -1,31 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import "./styles/cosmicBackground.css";
 import Stars from "./components/Stars/Stars";
 import Message from "./components/Message/Message";
 import DialogueManager from "./components/DialogueManager/DialogueManager";
 import SoundManager from "./components/SoundManager/SoundManager";
+import NameInput from "./components/NameInput/NameInput";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 
 function App() {
-  const [showMessage, setShowMessage] = useState(false); // État pour afficher le message initial
-  const [fadeOut, setFadeOut] = useState(false); // État pour l'animation de fondu
-  const [musicStarted, setMusicStarted] = useState(false); // État pour savoir si la musique a commencé
-  const [showDialogue, setShowDialogue] = useState(false); // État pour afficher la boîte de dialogue
+  const [showMessage, setShowMessage] = useState(false);
+  const [fadeOutMessage, setFadeOutMessage] = useState(false);
+  const [musicStarted, setMusicStarted] = useState(false);
+  const [showDialogue, setShowDialogue] = useState(false);
+  const [name, setName] = useState("");
+  const [showNameInput, setShowNameInput] = useState(false);
+  const [fadeOutNameInput, setFadeOutNameInput] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+  const [loadingComplete, setLoadingComplete] = useState(false);
+
+  useEffect(() => {
+    if (fadeOutMessage) {
+      setTimeout(() => {
+        setShowMessage(false);
+        setShowNameInput(true);
+      }, 2000); // Durée de l'animation de fondu
+    }
+  }, [fadeOutMessage]);
+
+  const handleNameSubmit = (submittedName) => {
+    setName(submittedName);
+    setFadeOutNameInput(true);
+    setTimeout(() => {
+      setShowNameInput(false);
+      setShowLoading(true);
+    }, 2000); // Durée de l'animation de fondu
+  };
+
+  const handleLoadingComplete = () => {
+    setShowLoading(false);
+    setLoadingComplete(true);
+    setTimeout(() => {
+      setShowDialogue(true);
+    }, 3000); // Attendre 3 secondes avant d'afficher le dialogue
+  };
 
   return (
     <div className="App">
       <Stars />
-      <Message showMessage={showMessage} fadeOut={fadeOut} />
-      <DialogueManager
-        showDialogue={showDialogue}
-        setShowDialogue={setShowDialogue}
-      />
+      {showMessage && (
+        <Message showMessage={showMessage} fadeOut={fadeOutMessage} />
+      )}
+      {showNameInput && (
+        <NameInput
+          onNameSubmit={handleNameSubmit}
+          fadeOut={fadeOutNameInput}
+        />
+      )}
+      {showLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+      {loadingComplete && showDialogue && name && (
+        <DialogueManager
+          showDialogue={showDialogue}
+          setShowDialogue={setShowDialogue}
+          name={name}
+        />
+      )}
       <SoundManager
         musicStarted={musicStarted}
         setMusicStarted={setMusicStarted}
-        setFadeOut={setFadeOut}
+        setFadeOut={setFadeOutMessage}
         setShowMessage={setShowMessage}
         setShowDialogue={setShowDialogue}
+        loadingComplete={loadingComplete} // Passer l'état de chargement complet
       />
     </div>
   );

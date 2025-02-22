@@ -15,6 +15,7 @@ const SoundManager = ({
   setFadeOut,
   setShowMessage,
   setShowDialogue,
+  loadingComplete,
 }) => {
   const [audio] = useState(new Audio(backgroundMusic)); // État pour l'audio de fond
 
@@ -70,6 +71,12 @@ const SoundManager = ({
     setShowDialogue,
     setMusicStarted,
   ]);
+
+  useEffect(() => {
+    if (loadingComplete && !musicStarted) {
+      playSound(startSound, startSoundVolume); // Jouer le son de démarrage après le chargement
+    }
+  }, [loadingComplete, musicStarted]);
 
   return null;
 };
